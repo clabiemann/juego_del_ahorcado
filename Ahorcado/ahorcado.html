@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>    
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width">
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="logo de Alura">
+        </div>
+    </header>
+    <div class="bienvenida">
+        <h1 class="titulo_bienvenida">Bienvenido al juego del ahorcado</h1>
+        <input type="button" value="Comenzar juego" class="btn_comienzo">
+    </div>
+
+    <div class="ingreso_palabra">
+        <input type="text" name="ingreso_palabra" class="txt_ingreso_palabra" placeholder="Ingrese la palabra">
+        <p class="advertencia"> ! máximo 8 letras</p>
+        <input type="button" value="Guardar y empezar" class="btn_guardar">
+        <input type="button" value="Cancelar" class="btn_cancelar">
+    </div>
+
+    <section class="juego">
+        <div class="parte_grafica">
+            <canvas width="600" height="400" class="canvas"></canvas>
+        </div>
+        <div class="textos">
+            <input type="text" name="ingreso_letras" class="ingreso_letras" placeholder="Letra">
+        </div> 
+        <div class="botones_juego">
+            <input type="button" value = "Nuevo Juego" class="btn_nuevo_juego">
+            <input type="button" value="Desistir" class="btn_desistir">
+        </div>
+        
+    </section>  
+     
+
+
+    <footer>
+        <p class="copyright">&copy Copyright Biemann Soft - 2022</p>
+    </footer>
+
+    <script src="ahorcado.js"></script>
+</body>
+<html>

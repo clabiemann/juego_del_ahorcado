@@ -1,0 +1,79 @@
+.bienvenida{
+    text-align: center;
+    
+}
+.btn_comienzo{
+    width: 200px;
+    height: 80px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: x-large;
+    margin: 200px;
+   
+    
+}
+.ingreso_palabra{
+    display: block;
+    text-align: center;
+     
+}
+.txt_ingreso_palabra{
+    width: 500px;
+    height: 80px;
+    font-size: x-large;
+    text-align: center;
+    margin: 100px;
+    
+}
+.btn_guardar, .btn_cancelar{
+    width: 250px;
+    height: 60px;
+    text-align: center;
+    font-size: x-large;
+    margin: 30px;
+    border-radius: 20px;
+}
+.parte_grafica{
+   text-align: center;
+}
+.textos{
+    text-align: center;
+}
+.btn_nuevo_juego, .btn_desistir{
+    width: 250px;
+    height: 60px;
+    font-size: x-large;
+    border-radius: 20px;
+    margin: 10px;
+}
+.botones_juego{
+    text-align: center;
+}
+.letras_incorrectas{
+    width: 500px;
+    height: 50px;
+    font-size: large;
+    text-align: center;
+    
+    
+}
+.ingreso_letras{
+    width: 50px;
+    height: 50px;
+    font-size: large;
+    text-align: center;
+    
+}
+.textos{
+    margin-top: 20px;
+}
+
+
+.ocultar{
+    display: none;
+}
+.copyright{
+    text-align: center;
+    margin: 0;
+}
+
