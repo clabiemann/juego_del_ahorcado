@@ -10,9 +10,13 @@ var botonCancelar = document.querySelector(".btn_cancelar");
 var botonNuevoJuego = document.querySelector(".btn_nuevo_juego");
 var botonDesistir = document.querySelector(".btn_desistir");
 var juego = document.querySelector(".juego");
+var incorrectas = document.querySelector(".incorrectas");
+var faltan = document.querySelector(".faltan");
 var dibujos = document.querySelector(".canvas");
 var lineas = dibujos.getContext("2d");
 var letrasDibujadas = dibujos.getContext("2d");
+var faltan_letras = dibujos.getContext("2d");
+var faltan_letras_correctas = 0;
 var letras_palabra=[];
 var letras_ingresadas=[];
 var letras_incorrectas=[];
@@ -29,19 +33,27 @@ function mostrarPrimerPantalla(){
     palabraIngresada.classList.add("ocultar");
     bienvenida.classList.remove("ocultar");
     juego.classList.add("ocultar");
+    incorrectas.classList.add("ocultar");
+    faltan.classList.add("ocultar");
 }
 
 function mostrarSegundaPantalla(){
     bienvenida.classList.add("ocultar");
     palabraIngresada.classList.remove("ocultar");
     txtPalabraIngresada.focus();
+    // si se pulsa Enter es como pulsar botón guardar
+    document.addEventListener("keyup", function(event){
+        if (event.keyCode === 13){
+            verificarPalabra();
+        }
+    });
 }
 
 function verificarPalabra(){
     var letras = txtPalabraIngresada.value;
     var cantidad_letras = letras.length;
-    if (cantidad_letras > 8) {
-        alert ("La palabra ingresada tiene mas de 8 caracteres");
+    if (cantidad_letras > 12) {
+        alert ("La palabra ingresada tiene mas de 12 caracteres");
         //limpiar el txt
         mostrarSegundaPantalla();
     } else{
@@ -52,6 +64,8 @@ function verificarPalabra(){
 function mostrarTercerPantalla(){
     palabraIngresada.classList.add("ocultar");
     juego.classList.remove("ocultar");
+    incorrectas.classList.remove("ocultar");
+    faltan.classList.remove("ocultar");
     ingresoLetras.focus();
     armarArray();
     dibujarLineas();
@@ -73,6 +87,9 @@ function dibujarLineas(){
     for (var i = 1; i < cantidad_letras + 1; i++) {
         lineas.strokeRect((i*50),400,40,0);
     }
+    letrasDibujadas.font="20px Georgia";
+    letrasDibujadas.fillStyle="black";
+    faltan_letras.fillText(cantidad_letras, 400,18);
 }
 function compararLetras(){
     ingresoLetras.addEventListener("input", function(){
@@ -86,8 +103,10 @@ function compararLetras(){
                 for(posicion = 0; posicion < letras_ingresadas.length ; posicion++){
                     if(nueva_letra == letras_ingresadas[posicion]){
                         repetido = true;
+                        console.log(letras_ingresadas[posicion]);
                         alert (" La letra " + nueva_letra + " ya fue ingresada anteriormente ");
-                        break;
+                        retardar();
+                        return;
                     }
                 }
             }
@@ -105,6 +124,13 @@ function compararLetras(){
                     letrasDibujadas.fillStyle="black";
                     letrasDibujadas.fillText(nueva_letra, ((i*50)+60), 390);
                     retardar()
+                    //  contador de letras faltantes
+                    faltan_letras_correctas = letras_palabra.length - letras_correctas.length;
+                    lineas.fillRect(390,0,30,30);
+                    lineas.fillStyle="white";
+                    faltan_letras.font="20px Georgia";
+                    faltan_letras.fillText(faltan_letras_correctas, 400,18);
+                    
                 }
             }
         
@@ -117,9 +143,7 @@ function compararLetras(){
                 letrasDibujadas.font="20px Georgia";
                 letrasDibujadas.fillStyle="black";
                 letrasDibujadas.fillText(nueva_letra,(posicionLetrasIncorrectas*10), 18);
-                posicionLetrasIncorrectas = posicionLetrasIncorrectas + 3;
-                console.log(nueva_letra);
-                console.log(posicionLetrasIncorrectas);
+                posicionLetrasIncorrectas = posicionLetrasIncorrectas + 1.5;
                 dibujarOrca();
                 retardar();
                 
@@ -138,10 +162,10 @@ function retardar() {
 function alertFunc() {
     ingresoLetras.value="";
     if (letras_palabra.length == letras_correctas.length){
-        alert (" ¡ G A N A S T E ! ");
+        alert (" ¡  G A N A S T E  ! ");
     }
     if (chance == 10){
-        alert (" ¡ P E R D I S T E ! " );
+        alert (" ¡  P E R D I S T E  !   " + "  La palabra era:   " + txtPalabraIngresada.value.toUpperCase() );
     }
 }
 
@@ -149,6 +173,8 @@ function dibujarOrca(){
     
     if (chance == 1){
         //base
+        lineas.lineWidth = 10;
+        lineas.strokeStyle = "red";
         lineas.strokeRect(50,355,100,0);
     }
     if (chance == 2){

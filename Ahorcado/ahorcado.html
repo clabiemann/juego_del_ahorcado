@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>    
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width">
     <title>Juego del Ahorcado</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="Logo.png" alt="logo de Alura">
+        <div class="encabezado">
+            <img class ="logo" src="Logo.png" alt="logo de Alura">
+            <h3 class="incorrectas">Letras incorrectas:</h3>
+            <h3 class="faltan">Cantidad de letras que faltan:</h3>
         </div>
     </header>
     <div class="bienvenida">
-        <h1 class="titulo_bienvenida">Bienvenido al juego del ahorcado</h1>
-        <input type="button" value="Comenzar juego" class="btn_comienzo">
+        <h2>Bienvenido al </h2>
+        <h1> JUEGO &nbsp; DEL &nbsp; AHORCADO</h1>
+        <input type="button" value="Comenzar juego" class="btn_comienzo" id="btn" title="Dar comienzo al juego">
     </div>
 
     <div class="ingreso_palabra">
+        <h3>Ingrese una palabra de 12 letras como máximo sin que la vea la otra persona, luego presione el botón "Guardar" para comenzar el juego</h3>
         <input type="text" name="ingreso_palabra" class="txt_ingreso_palabra" placeholder="Ingrese la palabra">
-        <p class="advertencia"> ! máximo 8 letras</p>
-        <input type="button" value="Guardar y empezar" class="btn_guardar">
-        <input type="button" value="Cancelar" class="btn_cancelar">
+        <div class="botones_ingreso">
+            <input type="button" value="Guardar" class="btn_guardar" id="btn" title="Guarda la palabra ingresada para que la otra persona la adivine">
+            <input type="button" value="Cancelar" class="btn_cancelar" id="btn" title="Cancela el juego y vuelve a la primer pantalla">
+        </div>
     </div>
 
     <section class="juego">
@@ -34,16 +37,13 @@
             <input type="text" name="ingreso_letras" class="ingreso_letras" placeholder="Letra">
         </div> 
         <div class="botones_juego">
-            <input type="button" value = "Nuevo Juego" class="btn_nuevo_juego">
-            <input type="button" value="Desistir" class="btn_desistir">
+            <input type="button" value="Nuevo Juego" class="btn_nuevo_juego" id="btn" title="Comienza un nuevo juego">
+            <input type="button" value="Desistir" class="btn_desistir" id="btn" title="Muestra la palabra oculta">
         </div>
-        
     </section>  
      
-
-
     <footer>
-        <p class="copyright">&copy Copyright Biemann Soft - 2022</p>
+        <p class="copyright">&copy Copyright Biemann - 2022</p>
     </footer>
 
     <script src="ahorcado.js"></script>
